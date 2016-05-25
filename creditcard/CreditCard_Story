@@ -1,0 +1,16 @@
+Story credit card number
+-----------------------------
+
+User input the credit card number, program should be able to validate the credit card using the Luhn algorithm and identiy the full account number
+Luhn algorithn
+ 1.Starting from the rightmost digit (the check digit), moving left, double the value of every second digit.
+  if the doubling is greater than 9, sum the digits
+ 2. Take the sum of all digits, if the sum multiple by 9 modulo 10 is equal to 0 then number is valid, append the 0 as last to make the full account number. Otherwise sum multiply by 9 modulo 10 result is appended at very last of number to generate the whole account number. which is x say a check digit
+  So Algorithm is
+  1. Compute the sum of the digits
+  2. Take the units digits
+  3. Subtract the unit digit from 10
+  4. the result is the check digit, this will make the whole account number
+  
+
+ 
