@@ -1,0 +1,112 @@
+
+
+buildscript {
+	ext {
+		springBootVersion = '1.4.1.RELEASE'
+		jaxbTasks = true
+	}
+	repositories {
+		mavenCentral()
+		jcenter()
+		maven { url externalUrl }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath ("org.springframework:spring-aop:4.3.4.RELEASE")
+		classpath ("org.springframework:spring-aspects:4.3.4.RELEASE")
+		classpath("org.springframework:spring-context-support:4.3.4.RELEASE")
+		
+		classpath ("org.apache.httpcomponents:httpclient:4.5.2")
+		classpath ("org.springframework:spring-aop:4.3.4.RELEASE")
+		classpath ("commons-io:commons-io:2.4")
+		classpath ("org.beanio:beanio:2.1.0")
+		classpath("com.google.code.findbugs:jsr305:3.0.1")
+		classpath("org.freemarker:freemarker:2.3.25-incubating")
+		
+		classpath("org.springframework.integration:spring-integration-file:4.3.9.RELEASE")
+		classpath("org.springframework.integration:spring-integration-core:4.3.9.RELEASE")
+		classpath("org.springframework.integration:spring-integration-flow:1.0.0.RELEASE")
+		classpath("org.springframework.batch:spring-batch-integration:3.0.7.RELEASE")
+		classpath("org.springframework.integration:spring-integration-java-dsl:1.2.2.RELEASE")
+		classpath("org.springframework.integration:spring-integration-test:4.3.9.RELEASE")
+		classpath("org.springframework.integration:spring-integration-event:4.3.9.RELEASE")
+		
+		
+	}
+}
+
+
+// Apply the java plugin to add support for Java
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+apply plugin: 'application'
+
+  sourceSets {
+    main {
+        resources {
+            exclude '**/main/*'
+        }
+    }
+}      
+        
+jar {
+	baseName = 'demo-integration'
+	version = '0.0.1-SNAPSHOT'
+	include("com/**")
+	include("META-INF/**")
+}
+
+springBoot {
+  	mainClassName = "com.example.DemoIntegrationApplication"
+}
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    mavenCentral()
+     maven { url externalUrl }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+
+// In this section you declare the dependencies for your production and test code
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.21'
+	compile('org.springframework.boot:spring-boot-starter-batch:1.4.2.RELEASE')
+	compile ('org.springframework:spring-test:4.3.3.RELEASE')
+	compile ('org.springframework:spring-context:4.3.3.RELEASE')
+	compile('org.springframework:spring-aop:4.3.4.RELEASE')
+	compile('org.springframework:spring-aspects:4.3.4.RELEASE')
+	compile('org.springframework:spring-context-support:4.3.4.RELEASE')
+	
+	compile('org.springframework.batch:spring-batch-integration:3.0.7.RELEASE')
+	compile('org.springframework.integration:spring-integration-core:4.3.9.RELEASE')
+	compile('org.springframework.integration:spring-integration-flow:1.0.0.RELEASE')
+	
+	compile('org.springframework.integration:spring-integration-java-dsl:1.2.2.RELEASE')
+	compile('org.springframework.integration:spring-integration-file:4.3.9.RELEASE')
+	compile('org.springframework.integration:spring-integration-event:4.3.9.RELEASE')
+	testCompile('org.springframework.integration:spring-integration-test:4.3.9.RELEASE')
+	
+	
+	
+	compile('ch.qos.logback:logback-classic:1.1.6')	
+	compile ('commons-io:commons-io:2.4')
+	compile ('org.beanio:beanio:2.1.0')
+	compile ('net.sf.dozer:dozer:5.5.1')
+    compile ('net.sf.dozer:dozer-spring:5.5.1')
+
+	compile("com.google.code.findbugs:jsr305:3.0.1")
+    testCompile 'junit:junit:4.12'
+    testCompile('org.springframework.boot:spring-boot-starter-test:1.5.3.RELEASE')
+    
+    
+}
