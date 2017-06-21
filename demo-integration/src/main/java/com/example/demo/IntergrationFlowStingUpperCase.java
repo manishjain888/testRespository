@@ -19,6 +19,7 @@ public class IntergrationFlowStingUpperCase {
 		return IntegrationFlows
 				.from(foo)
 				.transform("payload+payload")
+				
 				.handle(String.class, (p,h)-> p.toUpperCase())
 				.get();
 	}
